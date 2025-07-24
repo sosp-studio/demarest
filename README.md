@@ -1,2 +1,5 @@
-# Luke Demarest
+Luke Demarest is a visual artist and researcher. His practice explores generative printmaking, complex systems modelling, and experimental interface design. He teaches at [Chelsea College of Arts](https://www.arts.ac.uk/colleges/chelsea-college-of-arts).
 
+Luke was an Artist in Residence at the [Victoria & Albert Museum](https://www.vam.ac.uk/) and a Research Fellow in Complex Systems Modelling and Information Design at [University College London](https://www.ucl.ac.uk/). He previously taught at [Central Saint Martins](https://www.arts.ac.uk/colleges/central-saint-martins) and the [School for Poetic Computation](https://sfpc.study/).
+
+Luke has also worked on projects for the UK Economic and Social Research Council, the Research Institute for Sociotechnical Cyber Security, the Institute of Making, the Knight Foundation, the Embodied AudioVisual Interaction Group, and Rosetta Stone. He also worked as a studio art project manager at the Mountain Lake Workshop contributing to interdisciplinary projects for the John Cage Centennial festival.
