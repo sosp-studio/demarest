@@ -1,0 +1,38 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+main{ 
+	padding:2em;
+	float:center;
+}
+h1{
+	float:center;
+}
+body{
+	background: #008292;
+}
+iframe{
+	margin:auto;
+	display: block;
+	width: 1960px;
+	height:1080px; 
+}
+#qr{
+	width:200px;
+	height:200px;
+	position:absolute;
+	top: 865px;
+	left: 85px;
+	top: 54em;
+	left: 5.25em;
+}
+#btp{
+	width:200px;
+	position:absolute;
+	top: 725px;
+	left: 85px;
+	top: 45em;
+	left: 5.25em;
+}
+
