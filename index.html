@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <title>Luke Demarest</title>
+    <style>
+    @font-face {
+      font-family: parasitype;
+      src: url(./fonts/parasitype/parasitype-light.otf);
+    }
+    @font-face {
+      font-family: haslea;
+      src: url(./fonts/haslea/haslea-plain.otf);
+    }
+    body, html, canvas{
+      margin: 0;
+      padding: 0;
+      font-variant-ligatures: discretionary-ligatures; 
+      cursor: pointer;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    html {
+      scrollbar-width: none;
+    }
+    body {
+      width: 100%;
+      font-family: parasitype;
+      padding-bottom: 10em;
+      color: #666;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    body::-webkit-scrollbar {
+      display: none;
+    }
+    canvas{
+      margin:auto;
+      display:block;
+      width: 100%;
+    }
+    main{
+      margin: auto;
+      max-width: 73rem;
+      padding: 4rem;
+    }
+    h1 {
+      font-size:5rem;
+      font-variant-ligatures: discretionary-ligatures; 
+      font-weight: normal;
+      color: rgba(220,220,220,255);
+    }
+    p {
+      font-family: "haslea", sans-serif;
+      font-size: 2.125rem;
+      line-height: 1.65;
+    }
+    a, a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover, a:focus {
+      text-decoration: none;
+    }
+    a:active {
+      color: inherit;
+    }
+    </style>
+    <script Content-type="application/javascript" src="./js/lib/p5.js"></script>
+    <script Content-type="application/javascript" src="./js/Particle.js"></script>
+    <script Content-type="application/javascript" src="./js/sketch.js"></script>
+  </head>
+  <body>
+    <div id="canvasParent"></div>
+    <main>
+      <h1>Luke Demarest</h1>
+      <p>
+        Luke Demarest is an artist, researcher, and educator 
+        whose practice explores 
+        emergence, simulation, and computational pattern-making.
+        He is the founder and director of 
+        <a href="https://sosp.studio">sosp.studio</a>
+        and currently teaches at Goldsmiths. 
+        Previously, he taught at Chelsea College of Arts, 
+        Central Saint Martins, and the School for Poetic Computation, 
+        and was Computational Artist in Residence at the V&A. 
+      </p>
+      <p>
+        For enquiries, contact 
+        <a href="mailto:luke@demare.st">luke@demare.st</a>.
+      </p>
+    </main>
+  </body>
+</html>
