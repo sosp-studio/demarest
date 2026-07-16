@@ -9,7 +9,7 @@ p5.disableFriendlyErrors = true;
 let w;
 let h;
 
-let numOfWorkshops = 7;
+let numOfWorkshops = 5;
 let workshops = [];
 
 function setup() {
@@ -18,8 +18,8 @@ function setup() {
     const canvas = createCanvas(w, h);
     canvas.parent("canvasParent");
     frameRate(30);
-    noiseSeed(800)
     background(255);
+    //noiseSeed(800)
 
     for(var x = 0; x < numOfWorkshops; x++){
         workshops.push( new Workshop( w*0.2, h*0.25, 5+map(random(),0,1,-1,3), 7+map(random(),0,1,-1,3), 3 + getRandomInt(2)) );
@@ -41,18 +41,14 @@ function draw() {
     if(frameCount % 7 == 0){
         push();
         rectMode(CORNER)
-        fill(0,1)
-        strokeWeight(1)
-        stroke(50,1)
+        noStroke();
         fill(255,10)
         rect(0,0,width,height);
         pop();
     }
 
-    // workshops
     for(var i = 0; i < workshops.length; i++){workshops[i].update();}
     for(var i = 0; i < workshops.length; i++){workshops[i].draw();}
-
 }
 
 //------
@@ -72,7 +68,6 @@ class Workshop{
     this.r = r;
 
     this.populate(x,y,this.agents,this.totalNumOfHeroes,this.totalNumOfCowards,this.r);
-
     this.allocateFriendsAndEnemies(this.agents);
   }
 
@@ -217,9 +212,8 @@ class Agent{
 
   draw(){
     push();
-    strokeWeight(3);
-    if(this.personality == "brave")stroke(120,20);
-    if(this.personality == "cowardly")stroke(220,20);
+    frameCount % 2 == 0 ? strokeWeight(3) : strokeWeight(2);
+    this.personality == "brave" ? stroke(100,20) : stroke(220,20);
     line(this.prevX,this.prevY,this.x,this.y);
     pop();
   }
