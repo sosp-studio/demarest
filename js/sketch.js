@@ -9,7 +9,7 @@ p5.disableFriendlyErrors = true;
 let w;
 let h;
 
-let numOfWorkshops = 5;
+let numOfWorkshops = 7;
 let workshops = [];
 
 function setup() {
