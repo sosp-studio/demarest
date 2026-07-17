@@ -9,7 +9,7 @@ p5.disableFriendlyErrors = true;
 let w;
 let h;
 
-let numOfWorkshops = 5;
+let numOfWorkshops = 6;
 let workshops = [];
 
 function setup() {
@@ -212,8 +212,8 @@ class Agent{
 
   draw(){
     push();
-    frameCount % 2 == 0 ? strokeWeight(3) : strokeWeight(2);
-    this.personality == "brave" ? stroke(100,20) : stroke(220,20);
+    frameCount % 2 == 0 ? strokeWeight(2) : strokeWeight(1);
+    this.personality == "brave" ? stroke(10,50) : stroke(220,20);
     line(this.prevX,this.prevY,this.x,this.y);
     pop();
   }

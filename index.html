@@ -1,74 +1,201 @@
 <!DOCTYPE html>
 <html lang="en-GB">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luke Demarest</title>
+
     <style>
     @font-face {
       font-family: parasitype;
-      src: url(./fonts/parasitype/parasitype-light.otf);
+      src: url(./fonts/haslea/haslea-plain.otf);
+      <!-- src: url(./fonts/parasitype/parasitype-light.otf); -->
     }
     @font-face {
       font-family: haslea;
       src: url(./fonts/haslea/haslea-plain.otf);
     }
-    body, html, canvas{
-      margin: 0;
-      padding: 0;
-      font-variant-ligatures: discretionary-ligatures; 
-    }
-    ::-webkit-scrollbar {
-      display: none;
-    }
-    html {
-      scrollbar-width: none;
-    }
-    body {
-      width: 100%;
-      font-family: parasitype;
-      padding-bottom: 10em;
-      color: #666;
-      overflow-y: scroll;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    body::-webkit-scrollbar {
-      display: none;
-    }
-    canvas{
-      margin:auto;
-      display:block;
-      width: 100%;
-    }
-    #canvasParent{
-      height:200px;
-    }
-    main{
-      margin: auto;
-      max-width: 73rem;
-      padding: 4rem;
-      padding-top:0;
-    }
-    h1 {
-      font-size:5rem;
-      font-variant-ligatures: discretionary-ligatures; 
-      font-weight: normal;
-      color: rgba(240,240,240,255);
-    }
-    p {
-      font-family: "haslea", sans-serif;
-      font-size: 2.125rem;
-      line-height: 1.65;
-    }
-    a, a:visited {
-      color: inherit;
-      text-decoration: none;
-    }
-    a:hover, a:focus {
-      text-decoration: none;
-    }
-    a:active {
-      color: inherit;
-    }
+      :root {
+        --page-width: 73rem;
+        --page-padding: clamp(1.5rem, 4vw, 4rem);
+        --text-colour: #666;
+        --heading-colour: #323232;
+        --gap: clamp(2rem, 4vw, 4rem);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scrollbar-width: none;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+        padding-bottom: clamp(5rem, 10vw, 10rem);
+        overflow-y: scroll;
+        color: var(--text-colour);
+        background: #fff;
+        font-family: parasitype;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      body::-webkit-scrollbar,
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        margin: auto;
+        min-height:200px;
+      }
+
+      #canvasParent {
+        <!-- height: clamp(120px, 18vw, 220px); -->
+        min-height:200px;
+      }
+
+      main {
+        width: min(100%, var(--page-width));
+        margin: 0 auto;
+        padding: 0 var(--page-padding);
+        color: black;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+        font-variant-ligatures: discretionary-ligatures; 
+      }
+
+      h1 {
+        margin-top: clamp(2rem, 5vw, 4rem);
+        margin-bottom: clamp(2rem, 5vw, 4rem);
+        color: var(--heading-colour);
+        font-size: clamp(3rem, 7.2vw, 5rem);
+        font-weight: normal;
+        <!-- line-height: 1.0; -->
+        font-family: arthemys;
+        letter-spacing: -0.02em;
+        font-variant-ligatures: discretionary-ligatures;
+        text-rendering: optimizeLegibility;
+      }
+
+      h1,
+      h1 * {
+        font-variant-ligatures: discretionary-ligatures;
+        font-feature-settings: "dlig" 1;
+      }
+
+      p {
+        max-width: 38ch;
+        font-family: "haslea", sans-serif;
+        font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+        line-height: 1.6;
+      }
+
+      a,
+      a:visited,
+      a:active {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 0.3rem;
+      }
+
+      .intro {
+        margin-bottom: clamp(6rem, 12vw, 11rem);
+      }
+
+      .intro p:last-child {
+        margin-bottom: 0;
+      }
+
+      .contact a {
+        border-bottom: 1px solid currentColor;
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(3rem, 6vw, 6rem) var(--gap);
+      }
+
+      .project {
+        display: block;
+      }
+
+      .project-image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+      }
+
+      .project h2 {
+        margin: 1rem 0 0.35rem;
+        color: var(--heading-colour);
+        font-size: clamp(1.35rem, 1.45vw, 1.8rem);
+        font-weight: normal;
+        line-height: 1.05;
+      }
+
+      .project p {
+        max-width: none;
+        margin-bottom: 0;
+        font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+        line-height: 1.45;
+      }
+
+      @media (hover: hover) {
+        .project-image {
+          transition: opacity 160ms ease;
+        }
+
+        .project:hover .project-image {
+          opacity: 0.82;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .projects {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 620px) {
+        h1 {
+          font-size: clamp(2.8rem, 15vw, 4rem);
+          font-size: clamp(2.8rem, 12vw, 4rem);
+        }
+
+        p {
+          font-size: clamp(1.05rem, 5vw, 1.35rem);
+          line-height: 1.55;
+        }
+
+        .projects {
+          grid-template-columns: 1fr;
+        }
+      }
+
     </style>
     <script Content-type="application/javascript" src="./js/lib/p5.js"></script>
     <script Content-type="application/javascript" src="./js/sketch.js"></script>
