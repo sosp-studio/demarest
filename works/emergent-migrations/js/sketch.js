@@ -82,6 +82,7 @@ class Workshop{
     for(var i = 0; i < a.length; i++){
       var tempFriend = getRandomInt(a.length);
       var tempEnemy = getRandomInt(a.length);
+      if(a.length < 3)continue;
       while (tempFriend == i) tempFriend = getRandomInt(a.length);
       while (tempEnemy == i || tempEnemy == tempFriend) tempEnemy = getRandomInt(a.length);
       a[i].allocateAgents(tempFriend,tempEnemy);

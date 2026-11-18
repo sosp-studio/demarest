@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,12 @@
 
     <style>
     @font-face {
+      font-family: spotmono;
+      src: url(./fonts/spot-mono/spot_mono_light.woff);
+    }
+    @font-face {
       font-family: parasitype;
-      src: url(./fonts/haslea/haslea-plain.otf);
-      <!-- src: url(./fonts/parasitype/parasitype-light.otf); -->
+      src: url(./fonts/parasitype/parasitype-light.otf);
     }
     @font-face {
       font-family: haslea;
@@ -46,7 +49,7 @@
         overflow-y: scroll;
         color: var(--text-colour);
         background: #fff;
-        font-family: parasitype;
+        font-family: haslea;
         scrollbar-width: none;
         -ms-overflow-style: none;
       }
@@ -56,7 +59,7 @@
         display: none;
       }
 
-      canvas {
+      #canvasParent canvas {
         display: block;
         width: 100%;
         margin: auto;
@@ -64,7 +67,7 @@
       }
 
       #canvasParent {
-        <!-- height: clamp(120px, 18vw, 220px); -->
+        /* height: clamp(120px, 18vw, 220px); */ 
         min-height:200px;
       }
 
@@ -72,7 +75,7 @@
         width: min(100%, var(--page-width));
         margin: 0 auto;
         padding: 0 var(--page-padding);
-        color: black;
+        color: #555;
       }
 
       h1,
@@ -101,23 +104,32 @@
         font-feature-settings: "dlig" 1;
       }
 
-      p {
-        max-width: 38ch;
-        font-family: "haslea", sans-serif;
+      p,li {
+        /* max-width: 38ch; */ 
+        /*font-family: "haslea", sans-serif;*/
+        font-family: "spotmono", sans-serif;
         font-size: clamp(1.2rem, 2.2vw, 1.7rem);
         line-height: 1.6;
+      }
+      figcaption{
+        font-family: spotmono;
+      }
+      figure{
+        padding: 1em 0;
+        margin: 0;
       }
 
       a,
       a:visited,
       a:active {
         color: inherit;
-        text-decoration: none;
+        text-decoration: underline;
       }
 
       a:focus-visible {
         outline: 1px solid currentColor;
         outline-offset: 0.3rem;
+        font-weight: bold;
       }
 
       .intro {
@@ -164,6 +176,109 @@
         line-height: 1.45;
       }
 
+      #abm-main canvas{
+      width:100% !important;
+      height:100% !important;
+      }
+      #abm-data canvas{
+      width:100% !important;
+      height:70% !important;
+      }
+
+input[type="checkbox"]{height: 2em;}
+#sketch1 div,canvas,.abm-controls{display:block;margin:0 auto;}
+section#sketch1{margin-bottom:5em;}
+
+label{
+  width: 110px;
+  display:inline;
+  padding-left: 1em;
+  font-family: spotmono;
+}
+.slider{
+  margin-top: 1em;
+}
+span.current{
+  font-weight:bold;
+}
+
+span.max{
+  float:right;
+  padding-right: 1em;
+}
+
+button{
+  display:inline;
+  width:30%;
+  margin:1%;
+  height:3em;
+}
+input{
+  /* width:960px; */
+  width:100%;
+  display:block;
+  margin:0.5em 0;
+}
+.abm-controls{
+ /* width:960px; */
+  /* margin-top:17px; */
+  background:#afafaf;
+  border-top:0.75em white solid;
+  margin-bottom: 15em;
+  padding-bottom: 2em;
+}
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+  input#numOfCowards[type='range']::-webkit-slider-thumb {
+    box-shadow: -960px 0 0 960px #000000 !important;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    box-shadow: -960 0 0 960px #fff;
+    background: rgb(20, 40, 40);
+    -webkit-appearance: none;
+    cursor: ew-resize;
+    height: 10px;
+    width: 10px;
+  }
+  
+  input[type='range']{
+    overflow: hidden;
+    -webkit-appearance: none;
+    background-color: #d8d8d8;
+  }
+    
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #d8d8d8;
+    margin-top: -1px;
+  }
+}
+
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #fff; 
+  height:19px;
+}
+input#numOfCowards[type="range"]::-moz-range-progress {
+  background-color: #000000 !important; 
+}
+input[type="range"]::-moz-range-track {  
+  background-color: #d8d8d8;
+}
+
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #d8d8d8; 
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: #d8d8d8;
+}
+
+
       @media (hover: hover) {
         .project-image {
           transition: opacity 160ms ease;
@@ -199,13 +314,608 @@
     </style>
     <script Content-type="application/javascript" src="./js/lib/p5.js"></script>
     <script Content-type="application/javascript" src="./js/sketch.js"></script>
+
   </head>
   <body>
     <div id="canvasParent"></div>
     <main>
-      <h1>Emergent Migrations</h1>
-      <p>
-      </p>
+      <section>
+        <h1>Emergent Migrations</h1>
+        <figure>
+        <iframe width="100%" height="695px" src="https://www.youtube.com/embed/XtM5fplvb1U?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <figcaption style="
+    font-size: 1.126em;
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+  ">
+
+          A fully interactive version of the <i>Emergent Migrations</i> ABM is located at the end of this webpage.
+          You can skip directly to it by <a href="index.html#emergentMigrations">clicking here</a>.
+  </figcaption>
+        </figure>
+       <p>
+        <i>Emergent Migrations</i> is a proof of concept for using <b>Agent-Based Modeling (ABM)</b> to simulate, explore and visually describe international low-wage labour migration between Myanmar and Thailand. 
+          Being able to create a useful ABM requires domain specific knowledge, computational literacies, and mathematical fluencies, but being able to understand an ABM does not. 
+          This first model iteration explores ABM’s potential use for collaborations within interdisciplinary research teams and for disseminating research findings through narrative interactive visuals for a general public. 
+          Social simulations, such as ABMs, have increasingly been used as ‘touchstones’ to help facilitate theoretical and empirical debates around complex social phenomena. 
+          <i>Emergent Migrations</i> is the first iteration of an ABM that will be further workshopped and validated with interdisciplinary expert networks and groups of NGO, government and community stakeholders working on issues pertaining to low-wage labour migration.
+        </p>
+        <div class="wind-image">
+        <figure style="margin: 0;">
+          <img  
+          alt="agent-based model of human migration pathways"
+          style="width: 100%; height: auto; display: block; border-radius: 8px;"
+          src="./assets/emergent-migrations-interface.png"
+          >
+          <figcaption style="
+            font-size: 1.126em;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+          ">
+            Emergent Migrations, a fully-accessible theoretically-informed agent-based model that runs natively in a web browser.
+          </figcaption>
+        </figure>
+        </div>
+
+
+        </p>
+      </section>
+      <section>
+        <h2>Technical Background</h2>
+        <p>
+          A <b>model</b> is an abstracted representation of a real world system, process, object, event or phenomenon. 
+          A <b>computational model</b> is a model that takes specific inputs, algorithmically manipulates those inputs, and generates structured outputs. 
+          <b>Modelling</b>, the practice of model making, can help examine and understand phenomena that exist in the real world in a way that is more efficient and tractable than directly observing reality.
+        </p>
+        <p>
+          Many phenomena can be usefully modeled as an <b>environment</b>, a set of <b>agents</b>, and descriptions of agent-to-agent and agent-to-environment <b>interactions</b>. 
+          Systems that are composed of many distributed interacting parts are known as <b>complex systems</b>. 
+          Novel and coherent patterns, properties, and structures that arise from the interactions of multiple distributed elements in a complex system are known as <b>emergent behavior</b>. 
+          <b>Agent-Based Modeling (ABM)</b> is a computational modeling technique for representing, exploring, and explaining some complex systems that exhibit emergent behavior over time. 
+          Each of the elements (environment, agents, behaviors) in a complex system can be translated into computational rules that build the basis of an ABM.
+        </p>
+        <p>
+          <b>General characteristics of Agent-Based Models include:</b>
+        </p>
+        <ul>
+          <li>
+            properties, structures and complex patterns of behaviors are not explicitly stated, but “self-organize” and emerge from simple underlying rules.
+          </li>
+          <li>
+            randomness in individual agent behavior can exist within consistent non-random population behavior.
+          </li>
+        </ul>
+        <p>
+          <b>Agent-Based Modelling can generally be useful when:</b>
+        </p>
+        <ul>
+          <li>
+            one needs a <b>temporally dynamic</b> (time-based) understanding of a complex system.
+          </li>
+          <li>
+            a complex system has an agent population larger than ~10 and fewer than ~10 million.
+          </li>
+          <li>
+            a complex system has agents that exhibit <b>heterogeneous spatio-temporal behavior</b> and can change behavior and strategy<sup><a href="index.html#footnote01">1</a></sup> based on past events.
+          </li>
+        </ul>
+        <h2>Thematic Background</h2>
+        <p>
+          <b>Low-wage labour migration between Myanmar and Thailand</b> is a complex system that exhibits emergent behavior over time. 
+          This system is made up of millions of migrants, intermediaries (individuals that facilitate migration or employment processes such as travel or job placement), and employers. 
+          Agents exhibit heterogeneous spatio-temporal behavior that change to account for changes in social contexts, migration policy, land zoning laws, supply chains, monetary systems, weather patterns, and public health emergencies, like Covid-19 (<a target="_blank" href="https://www.reuters.com/article/us-health-coronavirus-thailand-exodus-idUSKBN21C0ZI">Reuters, 2020</a>).
+        </p>
+        <p>
+          A sizable body of research on labour migration exists, but many forms of traditional data analysis (statistical regressions, thematic analysis, etc.) and forms of data (narrative texts, static or moving images, etc.) fail on their own to accurately or comprehensively describe the temporal mechanisms within labour migration systems. 
+          As stated by experts in the broader field of multilevel modeling, “progress in most subjects of pressing societal concern is determined by our ability to design and solve multiscale models of the particular systems under study … system science is nothing other than the study of multiscale phenomena in the domain of interest, where understanding of the phenomenology turns critically on our ability to represent our account for interactions from multiple levels.” (<a target="_blank" href="https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.2013.0377">Hoekstra et al, 2013</a>) 
+          Programmatic intervention and policy responses need to be informed by a temporally dynamic understanding of the systems they are intervening to change in order to influence what are causally complex problems. In this case, to positively change the health outcomes of migrant workers and reduce systemic harm we first need to understand the mechanisms and processes that lead to entry into decent work versus labour exploitation.
+        </p>
+        <p>
+          There is no silver bullet in finding the solution to complex social problems, but Agent-Based Modeling coupled with other computational research methods can be used to attempt to fill in some of the known research gaps. 
+          Social science researchers are beginning to explore more computational modelling methods for applied research across a range of disciplines, such as public health (<a target="_blank" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3395878/">El-Sayed, 2012</a>). 
+          In 2019, I contributed to an interdisciplinary research team on the border of Myanmar and Thailand that collected labour migration data with custom interactive data collection tools (<a href="index.html#figure01">Figure 1</a>). 
+          This data will be used for future Agent-Based Modeling. However, regardless of the data collection method and type of data, research data on these complex problems are often inaccessible, inaccurate, out-dated, or unrepresentative. 
+          New methods can reveal unforeseen mechanisms at play in larger complex systems, but we must recognize a methods usefulness with its limits. 
+          There can also be extensive ethical and logistical constraints in collecting data from marginalised or hard-to-reach populations.
+        </p>
+
+        <div class="wind-image">
+        <figure style="margin: 0;">
+          <img 
+          id="figure01" 
+          src="../assets/second.png"
+          style="width: 100%; height: auto; display: block; border-radius: 8px;"
+          >
+          <figcaption style="
+            font-size: 1.126em;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+          ">
+           Egocentric network survey tool built with OpenDataKit 
+          </figcaption>
+        </figure>
+        </div>
+
+        <p><b>Figure 1. Screenshots from custom interactive network mapping tool</b></p>
+      </section>
+      <section>
+        <h2>Building a First ABM</h2>
+        <p>
+          For the purpose of this proof of concept, one can think of <b>exploratory</b> ABM and <b>phenomenon-based</b> ABM as the two major categories of ABM.<sup><a href="index.html#footnote02">2</a></sup> 
+          The categories lay across a spectrum of specificity to the research question that one wants answered by the ABM. 
+          Exploratory ABM lies across the less specific half of the spectrum. 
+          Phenomenon-based lies across the more specific half of the spectrum. 
+          The goal is to have an increasingly specific research question as one explores and iterates through the model design space.
+        </p>
+        <p>
+          With exploratory ABM, one uses general observations or theory to build a general model, compares the general model to observations, and slowly converges on an explanatory model. 
+          With phenomenon-based ABM, one uses a reference pattern to simulate the pattern, varies parameters to explore alternative patterns (counterfactuals), and approaches a candidate explanatory mechanism. 
+          This ABM is exploratory and is built from general observations and developed heuristics from on-site data collection on the border of Myanmar and Thailand.
+          Future iterations of this ABM will be phenomenon-based and empirically informed by research data published in 2021.
+        </p>
+        <p>
+          There are many ways of designing ABMs and the development choice depends on:
+        </p>
+        <ul>
+          <li>
+            type of phenomenon
+          </li>
+          <li>
+            level of knowledge in the content domain
+          </li>
+          <li>
+            comfort with computational tools
+          </li>
+          <li>
+            team structure
+          </li>
+          <li>
+            resources and timelines
+          </li>
+          <li>
+            personal taste
+          </li>
+        </ul>
+        <p>
+          Two general approaches to implementing ABMs are <b>Bottom-Up</b> and <b>Top-Down</b>. 
+          Bottom-Up starts by picking a phenomenon without outlining a formal research question and iteratively developing the formal research question along the way. 
+          Top-Down starts by creating a conceptual model and afterwards building a computational model. 
+          Top-Down is a common approach used by research teams where scientists with deep domain knowledge create the conceptual model with special interest groups and afterwards programmers implement it as a computational model.
+        </p>
+        <p>
+          The first iteration of this ABM uses the Bottom-Up approach since this is my first ABM and I am working on a part-time team of one. 
+          I am comfortable with computational tools, but I do not have deep domain specific knowledge. 
+          Knowing this, I iteratively developed the research question by meeting with those who do have domain specific knowledge. 
+          This work has had meaningful and insightful input from <a target="_blank" href="https://www.lshtm.ac.uk/aboutus/people/mcalpine.alys">Alys McAlpine</a> (London School of Hygiene and Tropical Medicine), <a target="_blank" href="https://www.lshtm.ac.uk/aboutus/people/kiss.ligia">Dr. Ligia Kiss</a> (UCL, Institute for Global Health), <a target="_blank" href="https://www.researchgate.net/scientific-contributions/39772034_Zaid_Chalabi">Dr. Zaid Chalabi</a> (UCL, The Bartlett) and <a target="_blank" href="https://www.lshtm.ac.uk/aboutus/people/zimmerman.cathy">Professor Cathy Zimmerman</a> (London School of Hygiene and Tropical Medicine). 
+          The recent development of this work has been supported by <a target="_blank" href="https://tin.fyi/about/"> Tin Geber</a> and the Digital Futures Fellowship team at <a target="_blank" href="https://www.hivos.org/news/announcing-the-hivos-fellowship/">Hivos</a>. 
+          In collaboration with these academic partners, I am in the process of building ABMs informed by pre-existing theoretical conceptual frameworks and empirical analysis. 
+          This will eventually be a mixed bottom-up/top-down approach.
+        </p>
+        <div class="wind-image">
+        <figure style="margin: 0;">
+          <img  
+          id="figure02" 
+          src="../assets/abm-workflows.jpeg"
+          style="width: 100%; height: auto; display: block; border-radius: 8px;"
+          >
+          <figcaption style="
+            font-size: 1.126em;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+          ">
+          <b>Figure 2. ABM Implementation Workflows</b> 
+          (<a target="_blank" href="../assets/abm-workflows.jpeg">full scale view</a>)
+          </figcaption>
+        </figure>
+        </div>
+
+        <p>
+          <b>Bottom-Up Basic Principles:</b>
+        </p>
+        <ul>
+          <li>
+            Start simple.
+          </li>
+          <li>
+            Be alert to possible interesting questions.
+          </li>
+          <li>
+            Start with a simple model related to the content domain or start with several simple components that might be useful in investigating the phenomenon.
+          </li>
+          <li>
+            Review what one has built for promising directions.
+          </li>
+          <li>
+            Conceptual model and computational model should co-evolve. 
+            Changes in one should drive changes in the other.
+          </li>
+        </ul>
+        <p>
+          <b>Top-Down Basic Principles:</b>
+        </p>
+        <ul>
+          <li>
+            Start simple.
+          </li>
+          <li>
+            Build towards the predefined research question.
+          </li>
+          <li>
+            Build the simplest set of agents and behavior rules that can explore the phenomenon.
+          </li>
+          <li>
+            Always think of the predefined research question. “Can progress be made without X?”
+          </li>
+          <li>
+            Slowly add elements to the model.
+          </li>
+        </ul>
+        <p>
+          Regardless of the chosen approach, it is important to ensure the computational model faithfully implements its target conceptual model. 
+          At every point in the development process the model should be able to provide some answers to the research question.
+        </p>
+      </section>
+      <section>
+        <h2>Emergent Migrations ABM</h2>
+        <p>
+          <b>Research Question</b>: How do individual intermediary-facilitated migrant pathways and larger labor migration corridors emerge within border regions?
+        </p>
+        <p>
+          I chose this ABM’s agent types by focusing on autonomous entities most related to the aforementioned research question. 
+          The agent types have more-or-less matching ‘granularity’ in terms of physical scale and temporal scale within the ABM. 
+          <i>Emergent Migrations</i> <b>agent types</b>:
+        </p>
+        <ul>
+          <li>
+            Migrant
+          </li>
+          <li>
+            Intermediary
+          </li>
+          <li>
+            Employer
+          </li>
+        </ul>
+        <p>
+          As an aside, some ABMs can include <b>homogeneous “proto-agents”</b> that don’t have individual properties, states, and behaviors, but inherit general properties, states, and behaviors from a “global” agent prototype. 
+          All proto-agents are clones of their agent protype. 
+          These simplified, homogenous proto-agents can be useful, but are not included in this model. 
+          This model only includes three populations from three <b>heterogeneous agent types</b>.
+        </p>
+        <p>
+          Table 1 shows agent types, their properties, and their behaviors. 
+          Agent type <b>properties</b> distinguish one agent from all other agents within their agent type. 
+          Agent type <b>behaviors</b> distinguish the agent type from all other agent types within the ABM.
+        </p>
+        <p>
+        </p>
+        <div class="wind-image">
+        <figure style="margin: 0;">
+          <img  
+          src="../assets/table-01.png"
+          style="width: 100%; height: auto; display: block; border-radius: 8px;"
+          >
+          <figcaption style="
+            font-size: 1.126em;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+          ">
+          <b>Table 1. Agent types with properties and behaviors</b>
+          </figcaption>
+        </figure>
+        </div>
+
+
+        <div class="wind-image">
+        <figure style="margin: 0;">
+          <img  
+          src="../assets/space-colonization.png"
+          style="width: 100%; height: auto; display: block; border-radius: 8px;"
+          >
+          <figcaption style="
+            font-size: 1.126em;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+          ">
+        <b>Figure 3. Agent Path Algorithm</b> (<a target="_blank" href="../assets/space-colonization.png">full scale view</a>)
+        <br>
+        (Inspired by <a target="_blank" href="https://www.researchgate.net/publication/256937867_Simulating_crowds_based_on_a_space_colonization_algorithm">Simulating crowds based on a space colonization algorithm</a>)
+          </figcaption>
+        </figure>
+        </div>
+
+
+        <p>
+        </p>
+      </section>
+      <section>
+        <h2>Environment</h2>
+        <p>
+          Environment <b>attributes</b> affect agent behavior. 
+          The values chosen should be in proportional spatial ‘granularity’ to the agent types. 
+          Global variables should always be classified as part of the environment. 
+          Global variables are often determined through the ABM interface.
+        </p>
+        <p>
+          <b>Environment attributes:</b>
+        </p>
+        <ul>
+          <li>
+            area width
+          </li>
+          <li>
+            area height
+          </li>
+          <li>
+            subareas:
+          </li>
+            <ul>
+              <li>
+                origin
+              </li>
+              <li>
+                destination
+              </li>
+              <li>
+                border
+              </li>
+            </ul>
+          <li>
+            total population of migrants
+          </li>
+          <li>
+            total population of intermediaries
+          </li>
+          <li>
+            total population of employers
+          </li>
+          <li>
+            Time-horizon
+          </li>
+        </ul>
+        <p>
+          The environment is an abstract spatial representation of the real physical space between Myanmar (origin) and Thailand (destination). 
+          It is more clear and efficient to for-go a literal highly-detailed geographic representation of the two bordering countries and instead simply represent Myanmar as a rectangle on the left, Thailand as a rectangle on the right, and a singular linear border in between the two countries. 
+          The Myanmar-Thailand border is notoriously porous and in large areas is physically manifested as bodies of water.
+        </p>
+        <p>
+        It is common for models with a rectangular-shaped environment to have a <b>torus-like boundary condition</b> where a moving agent will pass through the environment’s edge only to be relocated at the opposite end of the environment. 
+        <a target="_blank" href="https://ccl.northwestern.edu/netlogo/">NetLogo</a>, a programming language designed for and dedicated to ABM, has a default preset of torus-like boundary conditions for new models and models in the NetLogo Library. 
+          The alternative is a <b>walled boundary condition</b> where a moving agent will collide with the environment’s wall and will continue to move in local space, but in another direction. 
+          The <i>Emergent Migrations</i> ABM operates with the walled boundary condition as it models a phenomenon within explicit boundaried physical spaces.
+        </p>
+        <p>
+          It can be useful to note while designing an ABM that some spatially static agent types can be reclassified as part of the environment. 
+          This will usually reveal itself through conceptual and computational development. Knowing this, a future iteration of this ABM could classify the Employer agent type as an environmental agent since it is static with limited behaviors.
+        </p>
+
+        <div class="wind-image">
+        <figure style="margin: 0;">
+          <img  
+          src="../assets/bridge.png"
+          style="width: 100%; height: auto; display: block; border-radius: 8px;"
+          >
+          <figcaption style="
+            font-size: 1.126em;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+          ">
+          <b>Figure 4. Border crossing between Mae Sot, Thailand and Myawaddy, Myanmar</b>
+  <i>Figure 4 top right image</i>: Google Earth satellite imagery of the Friendship Bridge border crossing between Mae Sot, Thailand (right bank of the river) and Myawaddy, Myanmar (left bank of the river). 
+	  <i>Figure 4 bottom image</i>: While legally crossing the border by foot on the Friendship Bridge one can often look down the Moei River and see migrants illegally crossing the border (in this case, from Thailand back to Myanmar) via boat with transportation intermediaries. 
+	  <i>Figure 4 top left image</i>: A Myanmar researcher documents the river passage (from the same boat ride as in the bottom image) by covertly riding the boat with migrants across the border. 
+	  It is common for migrants to make daily, weekly, or monthly illegal trips across the border and these trips can often happen in broad daylight only meters from a legal crossing point like the Friendship Bridge. 
+	  Migrants and authorities are aware of these informal transportation systems and other immigration subsystems that are often hiding in plain sight. These informal transportation systems are often not a part of the official immigration system that would be recognized in official data sources and reports. This is a good reminder that most of our best models are approximate at best. An interdisciplinary team can reveal blindspots in our understanding.
+
+          </figcaption>
+        </figure>
+        </div>
+      </section>
+      <section>
+        <h2>Time-Steps</h2>
+        <p>
+          ABM does not represent <b>time</b> as continuous, but as <b>discrete steps</b> in serial, ordered phases called <b>time-steps</b>. 
+          This representation of time has an implicit assumption that having agents perform their actions in a specific order will not substantially affect our results. 
+          This assumption may need to be reexamined later on in the development process. 
+          Another implicit assumption could be that any arbitrary fixed order would be reasonable. 
+          Order can significantly change results. 
+          Always note the working assumptions of your model to keep awareness and make changes if needed.
+        </p>
+        <p>
+          It is common to set a time-step limit, the <b>time-horizon</b>, for an ABM. 
+          Having a consistent number of time steps per model run allows researchers to analyze the model by comparing the model runs. 
+          The time-horizon should have a level of granularity that matches the particular phenomenon, for example a migration process might happen over days or weeks but a work day is only a number of hours. 
+          The model should utilize whatever time units makes most sense for the process being simulated. 
+        </p>
+        <p>
+          <b>Initialization of the model:</b>
+        </p>
+        <ol>
+          <li>
+            Create an <b>environment</b> with an origin and a destination sub-section
+          </li>
+          <li>
+            Create <b>employers</b> in the destination sub-section
+          </li>
+          <li>
+            Create <b>intermediaries</b> across the origin and  destination sub-sections<sup><a href="index.html#footnote03">3</a></sup>
+          </li>
+          <li>
+            Create <b>migrants</b> in the origin sub-section
+          </li>
+        </ol>
+        <p>
+          <b>Model process each time-step:</b>
+        </p>
+        <p>
+          Note that the agent ‘updates’ are determined by the properties and behaviours as listed previously in Table 1.
+        </p>
+        <ol>
+          <li>
+            Show environment
+          </li>
+          <li>
+            Update employers: determine number of job openings
+          </li>
+          <li>
+            Update intermediaries: determine next location
+          </li>
+          <li>
+            Update migrants: determine next location and condition
+          </li>
+          <li>
+            Show employers
+          </li>
+          <li>
+            Show intermediaries
+          </li>
+          <li>
+            Show migrants
+          </li>
+          <li>
+            End loop if time-horizon is met
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h2>Making your own ABM</h2>
+        <p>
+          “No Models are correct, but some are useful.” - George Box
+        </p>
+        <p>
+          A lot can be understood about ABMs and complex systems through this learn-by-doing process, but this model is by no means perfect. 
+          There are a number of aspects of the ABM (and the research question) that will be changed in future iterations. 
+          In fact, we should always expect this to be the case! 
+          <b>Remember that the goal is to have an increasingly specific research question as you explore and iterate through the model design space and you should ensure the computational model faithfully implements its target conceptual model of the research question</b>.
+        </p>
+        <p>
+          For this sort of social simulation to be scientifically sound and rigorously implemented it requires thematic experts, technical experts, thorough research design processes, ethical reviews, and various scientific methodologies. 
+          ABMs can produce evidence on which to inform programs and policy and generally to understand real-world problems. 
+          However, this ABM is a playful proof of concept giving the visual and technical aspects of the conceptual and computational development.
+        </p>
+        <p>
+          If you want to try agent-based modelling, you can start with these provisional guiding questions:
+        </p>
+        <ul>
+          <li>
+            What part of the phenomenon would you like to build a model of?
+          </li>
+          <li>
+            What are the principle types of agents involved in this phenomenon?
+          </li>
+          <ul>
+            <li>
+              Are there proto-agents?
+            </li>
+          </ul>
+          <li>
+            In what type of environment do these agents operate in?
+          </li>
+          <ul>
+            <li>
+              Are there environmental agents?
+            </li>
+          </ul>
+          <li>
+            What are properties of the agent types?
+          </li>
+          <li>
+            What are the behaviors and actions of the agent types?
+          </li>
+          <li>
+            How do the agents interact with each other and the environment?
+          </li>
+          <li>
+            If you had to define the phenomenon in discrete steps, what events would occur in each time step and in what order?
+          </li>
+          <li>
+            What do you hope to observe in this model?
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Footnotes</h2>
+        <ol>
+          <li id="footnote01">
+            <a target="_blank" href="https://mitpress.mit.edu/books/introduction-agent-based-modeling">In Introduction to Agent-Based Modeling</a>, Walinsky & Rand note that an agent’s behavior is different from an agent’s strategy. 
+            A change in strategy can often result in a change in behavior. 
+            However, a change in behavior does not necessarily result in a change in strategy. 
+            A strategy expresses how to behave in a particular set of circumstances.
+          </li>
+          <li id="footnote02">
+            Sometimes a key distinction also made is whether the ABM aims to generate new theories (exploratory) or test theories (explanatory).
+          </li>
+          <li id="footnote03">
+            Note that intermediaries are created after employers since employer initial positions are used to determine the initial position of intermediaries by randomly selecting areas not yet occupied by employers.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <div class="wind-image">
+        <figure style="margin: 0;">
+        <img  
+        src="../assets/emergent-migrations-header.png"
+        style="width: 100%; height: auto; display: block; border-radius: 8px;"
+        >
+          <figcaption style="
+            font-size: 1.126em;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+          ">
+            A series of simulation runs will generate different pathways. 
+            The outputs of the simulations runs are then analyzed statistically for uncovering underlying patterns.
+          </figcaption>
+        </figure>
+        </div>
+      </section>
+
+    <section id="emergentMigrations">
+        <h2 style="text-align:center;margin-top:5em;"><i>Emergent Migrations</i> ABM</h2>
+      <div id="abm-main"></div>
+      <div id="abm-data"></div>
+      <div class="abm-controls">
+        <div class="slider">
+          <button id="start">start</button>
+          <button id="reset">restart</button>
+          <button id="export">export</button>
+        </div>
+        <div class="slider">
+          <label for="ticks"><span id="currentNumOfTicks" class="current"></span>Time Steps<span class="max">3000</span></label>
+          <input  name="ticks" id="numOfTicks" type="range" step="5" min="0" max="3000">
+        </div>
+        <div >
+          <div class="slider">
+            <label for="migrant"><span id="currentNumOfMigrants" class="current"></span>Migrants<span class="max">350</span></label>
+            <input name="migrant" id="numOfMigrants" type="range" step="1" min="1" max="350">
+          </div>
+          <div class="slider">
+            <label for="intermediary"><span id="currentNumOfIntermediaries" class="current"></span>Intermediaries<span class="max">150</span></label>
+            <input name="intermediary" id="numOfIntermediaries" type="range" step="1" min="1" max="150">
+          </div>
+          <div class="slider">
+            <label for="employer"><span id="currentNumOfEmployers" class="current"></span>Employers<span class="max">6</span></label>
+            <input name="employer" id="numOfEmployers" type="range" step="1" min="2" max="6">
+          </div>
+        </div>
+      </div>
+    </section>
     </main>
+    <script language="javascript" type="text/javascript" src="./js/sketch-abm.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/migrant.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/path.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/step.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/intermediary.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/employer.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/sketch-descriptives.js"></script>
   </body>
 </html>
+
