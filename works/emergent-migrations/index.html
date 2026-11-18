@@ -176,18 +176,35 @@
         line-height: 1.45;
       }
 
+      hr{
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: 0;
+        border: 0;
+        border-top: 3px solid #666;
+      }
+
       #abm-main canvas{
       width:100% !important;
       height:100% !important;
       }
+
       #abm-data canvas{
       width:100% !important;
       height:70% !important;
       }
 
-input[type="checkbox"]{height: 2em;}
-#sketch1 div,canvas,.abm-controls{display:block;margin:0 auto;}
-section#sketch1{margin-bottom:5em;}
+input[type="checkbox"]{
+  height: 2em;
+}
+#sketch1 div,canvas,.abm-controls{
+  display:block;
+  margin:0 auto;
+}
+section#sketch1{
+  margin-bottom:5em;
+}
 
 label{
   width: 110px;
@@ -877,9 +894,9 @@ input[type="range"]::-ms-fill-upper {
         </figure>
         </div>
       </section>
-
     <section id="emergentMigrations">
-        <h2 style="text-align:center;margin-top:5em;"><i>Emergent Migrations</i> ABM</h2>
+      <hr>
+      <h2 style="text-align:center;margin-top:5em;"><i>Emergent Migrations</i> ABM</h2>
       <div id="abm-main"></div>
       <div id="abm-data"></div>
       <div class="abm-controls">
