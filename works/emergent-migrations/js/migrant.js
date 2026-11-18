@@ -44,7 +44,7 @@ function Migrant (p5i,xPos,yPos,xDir,yDir,diameter){
       move:function(){parent.brokeredWalk()}, 
       color:p5i.color(255,174,66,255),
       stroke:p5i.color(0,255,255,255),
-      strokeWeight:3,
+      strokeWeight:5,
     },
     "transit":{
       logic:function(){},
@@ -52,7 +52,7 @@ function Migrant (p5i,xPos,yPos,xDir,yDir,diameter){
       color:p5i.color(255,174,66,255),
       //stroke:p5i.color(200,255,255,255),
       stroke:p5i.color(0,255,0,255),
-      strokeWeight:2,
+      strokeWeight:3,
       transitWalkCount:0,
     },
     "employed":{
@@ -62,14 +62,14 @@ function Migrant (p5i,xPos,yPos,xDir,yDir,diameter){
       color:p5i.color(99,106,128),
       //color:p5i.color(255,0,0,255),
       stroke:p5i.color(0,0,255,255),
-      strokeWeight:2,
+      strokeWeight:3,
     },
     "returning":{
       logic:function(){parent.findHome()},
       move:function(){parent.homeWalk()},    
       color:p5i.color(255,174,66,255),
       stroke:p5i.color(0,0,255,255),
-      strokeWeight:2,
+      strokeWeight:3,
     }
 
   };
