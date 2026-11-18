@@ -136,7 +136,7 @@ function Migrant (p5i,xPos,yPos,xDir,yDir,diameter){
 
   // brokered -------------------
 
-  this.findEmployer = function(){this.paths[this.paths.length-1].update();};
+  this.findEmployer = function(){if(this.paths.length > 0)this.paths[this.paths.length-1].update();};
   
   this.brokeredWalk = function(){};
 
@@ -145,7 +145,11 @@ function Migrant (p5i,xPos,yPos,xDir,yDir,diameter){
 
   this.transitWalk = function(){
 
-    this.pos = this.paths[this.paths.length -1].steps[this.paths[this.paths.length -1].steps.length - 1 - this.states[this.state].transitWalkCount].pos;
+    var path = this.paths[this.paths.length - 1];
+    if(!path || path.steps.length == 0 || !this.employer)return;
+    var stepIndex = path.steps.length - 1 - this.states[this.state].transitWalkCount;
+    if(stepIndex < 0)stepIndex = 0;
+    this.pos = path.steps[stepIndex].pos;
     p5i.push();
     p5i.stroke(this.states.transit.stroke);
     p5i.line(this.pos.x,this.pos.y,this.employer.pos.x,this.employer.pos.y);

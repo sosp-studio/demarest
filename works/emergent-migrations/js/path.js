@@ -148,7 +148,7 @@ function Path (p5i, migrant, pos, dir, network){
       
       // find step that reached the employer
       // >=
-      for(var i = this.steps.length -1; i > 0; i--){
+      for(var i = this.steps.length -1; i >= 0; i--){
         var ed = p5.Vector.dist(migrant.employer.pos,this.steps[i].pos);
         if(ed < eRecord){
           eRecord = ed;
@@ -157,6 +157,7 @@ function Path (p5i, migrant, pos, dir, network){
       };
 
       // remove all steps that do not lead to employer
+      if(employerStep == null)return;
       shortestPath.push(employerStep);
       while(shortestPath[shortestPath.length-1].parent != null){
         var nextStep = shortestPath[shortestPath.length-1].parent;

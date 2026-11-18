@@ -32,6 +32,7 @@ let migrationPathwaysABM = p5i => {
   p5i.setup = function() {
     var canvas = p5i.createCanvas(wEnv, hEnv,p5i.P2D);
     canvas.mousePressed(p5i.pauseSketch);
+    p5i.pixelDensity(1);
     p5i.background(175);
     p5i.frameRate(fr);
     p5i.textSize(30);
@@ -41,22 +42,18 @@ let migrationPathwaysABM = p5i => {
     p5i.select("#export").mousePressed(function(){p5i.exportData()});
 
     numOfTicks = p5i.select("#numOfTicks");
-    numOfTicks.touchEnded(p5i.setSketch);
     numOfTicks.mouseReleased(p5i.setSketch);
     numOfTicks.value(p5i.ticks);
 
     numOfMigrants = p5i.select("#numOfMigrants");
-    numOfMigrants.touchEnded(p5i.setSketch);
     numOfMigrants.mouseReleased(p5i.setSketch);
     numOfMigrants.value(p5i.numOfMigrants);
 
     numOfIntermediaries = p5i.select("#numOfIntermediaries");
-    numOfIntermediaries.touchEnded(p5i.setSketch);
     numOfIntermediaries.mouseReleased(p5i.setSketch);
     numOfIntermediaries.value(p5i.numOfIntermediaries);
 
     numOfEmployers = p5i.select("#numOfEmployers");
-    numOfEmployers.touchEnded(p5i.setSketch);
     numOfEmployers.mouseReleased(p5i.setSketch);
     numOfEmployers.value(p5i.numOfEmployers);
     
