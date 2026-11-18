@@ -156,7 +156,31 @@
         font-weight: normal;
         line-height: 1.05;
       }
+      .wind-image {
+      perspective: 1000px;
+      max-width: 800px;
+      margin: 100px auto;
+    }
 
+    .wind-image figure {
+      margin: 0;
+      transform-origin: center center;
+      animation: windTilt linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+
+    .wind-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @keyframes windTilt {
+      0% { transform: rotateX(-6deg); }
+      50% { transform: rotateX(4deg); }
+      100% { transform: rotateX(-6deg); }
+    }
       .project p {
         max-width: none;
         margin-bottom: 0;
@@ -205,6 +229,7 @@
     <main>
       <h1>Freediving</h1>
 
+<div class="wind-image">
 <figure style="margin: 0;">
   <img
     src="./images/1.jpg"
@@ -221,6 +246,9 @@
     Luke Demarest sled diving to a shipwreck off the coast of the Ionian Islands. Photo by Marcus Greatwood.
   </figcaption>
 </figure>
+</div>
+
+<div class="wind-image">
 <figure style="margin: 0;">
   <img
     src="./images/2.jpg"
@@ -237,6 +265,9 @@
     Marine Biologist Nonnie Scott explores WWII mines and ocean life. Photo by Luke Demarest.
    </figcaption>
 </figure>
+</div>
+
+<div class="wind-image">
 <figure style="margin: 0;">
   <img
     src="./images/3.jpg"
@@ -269,6 +300,9 @@
     Freediving team exploring a wreck with diving sleds. Photo by Marcus Greatwood.
   </figcaption>
 </figure>
+</div>
+
+<div class="wind-image">
 <figure style="margin: 0;">
   <img
     src="./images/1.jpg"
@@ -285,6 +319,7 @@
     Luke Demarest sled diving to a shipwreck off the coast of the Ionian Islands.
   </figcaption>
 </figure>
+</div>
       <p>
       </p>
     </main>
